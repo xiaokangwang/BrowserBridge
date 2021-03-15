@@ -6,6 +6,7 @@ import (
 	"github.com/xiaokangwang/BrowserBridge/handler/websocketadp"
 	"github.com/xtaci/smux"
 	"io"
+	"log"
 	"net/http"
 	"os"
 )
@@ -14,6 +15,7 @@ func (hs HTTPHandle) ServeBridge(rw http.ResponseWriter, r *http.Request) {
 	if hs.link.bridgemux != nil {
 		return
 	}
+	log.Println("reflective server connected")
 
 	upg := websocket.Upgrader{}
 	conn, err := upg.Upgrade(rw, r, nil)

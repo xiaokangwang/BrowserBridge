@@ -19,6 +19,7 @@ func Bridge(s *Settings) {
 		DoConnect := func() {
 			conn, err := websocket.Dial(s.DialAddr)
 			if err != nil {
+				fmt.Println(err, s.DialAddr)
 				return
 			}
 			smuxc, err := smux.Client(conn, nil)

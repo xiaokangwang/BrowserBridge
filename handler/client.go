@@ -14,7 +14,9 @@ func (hs HTTPHandle) ServeClient(rw http.ResponseWriter, r *http.Request) {
 	if hs.link.bridgemux == nil {
 		return
 	}
-	upg := websocket.Upgrader{}
+	upg := websocket.Upgrader{CheckOrigin: func(r *http.Request) bool {
+		return true
+	}}
 	conn, err := upg.Upgrade(rw, r, nil)
 	if err != nil {
 		fmt.Println(err.Error())

@@ -17,8 +17,8 @@ func main() {
 			log.Println(err)
 		}
 		host := urlw.Host
-		port := urlw.Port()
-		bridge.Bridge(&bridge.Settings{DialAddr: fmt.Sprintf("ws://%v:%v/link", host, port)})
+		log.Println(fmt.Sprintf("ws://%v/link", host))
+		bridge.Bridge(&bridge.Settings{DialAddr: fmt.Sprintf("ws://%v/link", host)})
 		js.Global.Get("location").Get("reload").Invoke()
 	}()
 }

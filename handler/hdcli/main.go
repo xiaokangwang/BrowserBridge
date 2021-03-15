@@ -3,12 +3,14 @@ package main
 import (
 	"fmt"
 	"github.com/xiaokangwang/BrowserBridge/handler"
+	"os"
 )
 
 func main() {
+
 	fmt.Println("V3")
 	handler.Handle(&handler.HandleSettings{
-		ListenAddr: "127.0.0.1:23321",
-		RemoteAddr: "wss://127.0.0.1:0",
+		ListenAddr: os.Args[2],
+		RemoteAddr: os.Args[1],
 	})
 }
